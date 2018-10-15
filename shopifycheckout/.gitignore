@@ -1,0 +1,11 @@
+.idea
+env
+*.pyc
+*.exe
+db.sqlite3
+FirefoxSeleniumProfile
+logs/*
+__pycache__/
+*.py[cod]
+./vscode
+*.log

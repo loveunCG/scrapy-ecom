@@ -1,0 +1,129 @@
+<!-- Breadcrumbs -->
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Dashboard</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+    </div>
+    <div class="col-md-7 col-4 align-self-center">
+    </div>
+</div>
+
+<!-- Content -->
+<div class="row">
+    <div class="col">
+      <div class="mb15">
+        <button mat-raised-button (click)="file_path.click()"><i class="mdi mdi-import"></i> Import Tasks</button>
+        <input type="file" accept=".csv" (change)="import_tasks($event)" style="display:none" #file_path>
+
+        <button mat-raised-button (click)="generateTasksCSV()" color="primary"><i class="mdi mdi-export"></i> Export Tasks</button>
+        <div class="pull-right">
+          <button mat-button color="primary">
+            <i class="mdi mdi-import"></i> Open Manual Captcha Harvester
+          </button>
+          <button mat-raised-button color="warn">
+            <i class="mdi mdi-export"></i> Set Timmer
+          </button>
+        </div>
+      </div>
+        <div class="table-container mat-elevation-z8" >
+            <div class="table-header">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+            </div>
+            <mat-table #table [dataSource]="dataSource" matSort (onload)="populateTasks()">
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
+
+                <!-- Retailer Column -->
+                <ng-container matColumnDef="site">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Retailer </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.site.url}} </mat-cell>
+                </ng-container>
+
+                <!-- Product Column -->
+                <ng-container matColumnDef="product">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Product </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.product}} </mat-cell>
+                </ng-container>
+
+                <!-- Size Column -->
+                <ng-container matColumnDef="size">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Size </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.size}} </mat-cell>
+                </ng-container>
+
+                <!-- Start Time Column -->
+                <ng-container matColumnDef="start_time">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Start Time </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.start_time}} </mat-cell>
+                </ng-container>
+
+                <!-- Profile Column -->
+                <ng-container matColumnDef="profile">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Profile </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.checkout.first_name}} </mat-cell>
+                </ng-container>
+
+                <!-- Proxy Column -->
+                <ng-container matColumnDef="proxy">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Proxy </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.proxy.ip}} </mat-cell>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <i class="mdi mdi-play"></i>
+                        <i class="mdi mdi-pause"></i>
+                        <i class="mdi mdi-lead-pencil"></i>
+                        <i class="mdi mdi-delete"></i>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+            </mat-paginator>
+        </div>
+        <div class="mt15" id="dashboard-table-footer">
+            <div class="row">
+                <div class="col">
+                    <button mat-raised-button color="success">Start All</button>
+                    <button mat-raised-button color="success">Start Selected</button>
+                </div>
+                <div class="col">
+                    <button mat-raised-button color="warn">Start All</button>
+                    <button mat-raised-button color="warn">Start Selected</button>
+                </div>
+                <div class="col">
+                    <button mat-raised-button color="success">Edit All</button>
+                    <button mat-raised-button color="success">Edit Selected</button>
+                </div>
+                <div class="col">
+                    <button mat-raised-button color="success">Duplicate All</button>
+                    <button mat-raised-button color="success">Duplicate Selected</button>
+                </div>
+                <div class="col">
+                    <button mat-raised-button color="success">Delete All</button>
+                    <button mat-raised-button color="success">Delete Selected</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

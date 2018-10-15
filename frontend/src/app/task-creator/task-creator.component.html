@@ -1,0 +1,46 @@
+<!-- Breadcrumbs -->
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Task Creator</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active">Task Creator</li>
+        </ol>
+    </div>
+    <div class="col-md-7 col-4 align-self-center">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-7 offset-md-3">
+        <h1>Create Task</h1>
+        <form id="task-creator" [formGroup]="task">
+            <mat-form-field>
+                <input matInput type="text" placeholder="Site" formControlName="site" minlength="3" maxlength="50">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Type" formControlName="type">
+                    <mat-option value="link">Link</mat-option>
+                    <mat-option value="variant">Variant</mat-option>
+                    <mat-option value="keyword">Keyword</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Size" formControlName="size" min="0" max="50">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="0.0.0.0" formControlName="proxy">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Checkout Type" formControlName="checkoutType">
+                    <mat-option value="FrontEnd">FrontEnd</mat-option>
+                    <mat-option value="Backend">Backend</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Quantity" formControlName="quantity" min="0" max="50">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="createTask()" [disabled]="!task.valid">Create Task</button>
+        </form>
+    </div>
+</div>

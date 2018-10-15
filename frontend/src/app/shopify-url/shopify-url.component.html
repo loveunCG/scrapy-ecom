@@ -1,0 +1,40 @@
+<div class="row page-titles">
+  <div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">Shopify URLs</h3>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active">Shopify URLs</li>
+    </ol>
+  </div>
+  <div class="col-md-7 col-4 align-self-center"></div>
+</div>
+  
+<!-- Content -->
+
+<mat-grid-list cols="1" rowHeight="300px" rowWidth="800px">
+  <mat-grid-tile class="grid-border"> 
+    <form class="shopify-form" [formGroup]="shopify_urls">
+      <mat-form-field style="width: 100%">
+        <textarea matInput placeholder="Shopify URLs" formControlName="shopify_urls"></textarea>
+      </mat-form-field>
+    </form>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile>
+    <button mat-raised-button color="primary" (click)="save_url()"> Save </button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <!-- <button mat-raised-button color="primary" (click)="clear_session()"> Clear and restart browser session </button> -->
+    <button mat-raised-button color="primary" (click)="clear_url()"> Clear </button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-raised-button color="primary" (click)="export_url()"> Export </button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-raised-button color="primary" (click)="file_path.click()"> Import </button>
+    <input type="file" accept=".csv" (change)="import_url($event)" style="display:none" #file_path>
+  </mat-grid-tile>
+</mat-grid-list>
+

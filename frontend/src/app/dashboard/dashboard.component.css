@@ -1,0 +1,51 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    overflow: auto;
+}
+
+.table-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+#dashboard-head-opt {
+    margin-bottom: 15px;
+}
+
+#dashboard-table-footer button {
+    font-size: 12px;
+    padding: 0 5px;
+    margin-bottom: 10px;
+}
+
+.table-container i.mdi {
+    cursor: pointer;
+}
+
+.table-container i.mdi.mdi-delete {
+    color: #E91E63;
+}
+
+.table-container i.mdi.mdi-pause {
+    color: #ccc;
+}
+
+.table-container i.mdi.mdi-play {
+    color: green;
+}
+
+.table-container .mat-cell {
+    font-weight: 400;
+}
+
+.mat-header-cell {
+    font-weight: bold;
+    font-size: 13px;
+}

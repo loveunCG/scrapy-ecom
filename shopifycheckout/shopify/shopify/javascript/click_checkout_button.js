@@ -1,0 +1,1 @@
+$('button.cart-checkout').click();

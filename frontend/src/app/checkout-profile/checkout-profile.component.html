@@ -1,0 +1,95 @@
+<!-- Breadcrumbs -->
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Checkout Profile</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active">Checkout Profile</li>
+        </ol>
+    </div>
+    <div class="col-md-7 col-4 align-self-center">
+    </div>
+</div>
+
+<form id="checkout-profile-form" [formGroup]="checkout">
+    <div class="row">
+
+        <div class="col-md-6">
+            <mat-form-field>
+               <!--  <input matInput type="text" placeholder="First Name" formControlName="first_name" minlength="3" maxlength="100" required> -->
+               <input matInput type="text" placeholder="First Name" formControlName="first_name" minlength="3" maxlength="100">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Last Name" formControlName="last_name" minlength="3" maxlength="100">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Address 1" formControlName="address_1" maxlength="300">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Address 2" formControlName="address_2" maxlength="300">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="City" formControlName="city" maxlength="100">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="State" formControlName="state" maxlength="100">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Zipcode" formControlName="zipcode" maxlength="100">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Country" formControlName="country">
+                    <mat-option value="France">France</mat-option>
+                    <mat-option value="Germany">Germany</mat-option>
+                    <mat-option value="Russia">Russia</mat-option>
+                    <mat-option value="Spain">Spain</mat-option>
+                    <mat-option value="United Kingdom">United Kingdom</mat-option>
+                    <mat-option value="United States of America">USA</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field>
+                <input matInput type="email" placeholder="Email address" formControlName="email" minlength="3" maxlength="100">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Phone" formControlName="phone" minlength="8" maxlength="16">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Card" formControlName="card" min="16" max="16">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="CVV" formControlName="cvv" min="3" max="4">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Expiry Date" formControlName="expiryDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-checkbox formControlName="isPaypal">Paypal</mat-checkbox>
+            <div id="paypal-credentials" [hidden]="!checkout.controls.isPaypal.value">
+                <mat-form-field>
+                    <input matInput type="email" placeholder="Paypal Email address" formControlName="paypalEmail" minlength="3" maxlength="100">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Paypal Password" formControlName="paypalPassword">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="mb15">
+        <button mat-raised-button (click)="file_path.click()">
+            <i class="mdi mdi-import" ></i> Import</button>
+            <input type="file" accept=".csv" (change)="csv2Array($event)" style="display:none" #file_path>
+            <!-- <input type="file" id="imgupload" style="display:none"/>  -->
+            <!-- <button id="OpenImgUpload">Image Upload</button> -->
+        <button mat-raised-button (click)="exportProfile()" [disabled]="!checkout.valid">
+            <i class="mdi mdi-export" ></i> Export</button>
+        <div class="pull-right">
+            <button mat-button color="primary">
+                                <i class="mdi mdi-import"></i> Load</button>
+            <button mat-raised-button color="primary" (click)="saveCheckout()" [disabled]="!checkout.valid">Save</button>
+        </div>
+    </div>
+
+</form>

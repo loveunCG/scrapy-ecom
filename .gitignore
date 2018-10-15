@@ -1,0 +1,18 @@
+.idea
+env
+*.pyc
+*.exe
+db.sqlite3
+FirefoxSeleniumProfile
+logs/*
+__pycache__/
+*.py[cod]
+./vscode
+*.log
+<<<<<<< HEAD
+/.metadata/
+=======
+.project
+.pydevproject
+.settings/
+>>>>>>> 3839a1931e9ee0513bc5c7f21702d3579582a3db
