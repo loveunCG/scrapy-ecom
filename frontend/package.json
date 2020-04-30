@@ -27,7 +27,7 @@
     "angular2-json2csv": "^1.1.2",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "rxjs": "^5.5.6",
     "sweetalert2": "^7.22.0",
     "zone.js": "^0.8.19"
