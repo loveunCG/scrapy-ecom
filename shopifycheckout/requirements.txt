@@ -14,7 +14,7 @@ djangorestframework==3.8.2
 hyperlink==18.0.0
 idna==2.6
 incremental==17.5.0
-lxml==4.2.1
+lxml==4.9.1
 Markdown==2.6.11
 parsel==1.4.0
 Pillow==5.1.0
